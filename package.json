@@ -6,27 +6,20 @@
     "@contentful/f36-components": "4.69.0",
     "@contentful/f36-tokens": "4.0.5",
     "@contentful/react-apps-toolkit": "1.2.16",
-    "@focus-reactive/content-ai-sdk": "0.0.4",
-    "@focus-reactive/contentful-ai-sdk": "0.0.1",
+    "@focus-reactive/contentful-ai-sdk": "link:../headless-cms-gpt-sdk/packages/contentful-ai-sdk",
     "@tanstack/react-query": "^5.56.2",
     "emotion": "10.0.27",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "react-hook-form": "^7.53.0",
-    "react-scripts": "5.0.1"
+    "react-hook-form": "^7.53.0"
   },
   "scripts": {
-    "dev:cf": "yalc add --link @focus-reactive/contentful-ai-sdk && yarn install && yarn start",
-    "start": "cross-env BROWSER=none react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "test": "vitest",
     "create-app-definition": "contentful-app-scripts create-app-definition",
-    "upload": "contentful-app-scripts upload --bundle-dir ./build",
-    "upload-ci": "contentful-app-scripts upload --ci --bundle-dir ./build --organization-id $CONTENTFUL_ORG_ID --definition-id $CONTENTFUL_APP_DEF_ID --token $CONTENTFUL_ACCESS_TOKEN",
-    "pre-dev-contentful-ai-tookit": "yalc add --link @focus-reactive/contentful-ai-sdk && yarn build && yalc publish --push",
-    "yalc-clean": "yalc remove --all",
-    "yalc-check": "yalc check"
+    "upload": "contentful-app-scripts upload --bundle-dir ./dist",
+    "upload-ci": "contentful-app-scripts upload --ci --bundle-dir ./dist  --organization-id $CONTENTFUL_ORG_ID --definition-id $CONTENTFUL_APP_DEF_ID --token $CONTENTFUL_ACCESS_TOKEN"
   },
   "browserslist": {
     "production": [
@@ -46,7 +39,12 @@
     "@types/node": "16.18.108",
     "@types/react": "18.3.5",
     "@types/react-dom": "18.3.0",
+    "@vitejs/plugin-react": "4.2.1",
     "cross-env": "7.0.3",
-    "typescript": "4.9.5"
+    "typescript": "4.9.5",
+    "vite": "^6.0.4"
+  },
+  "resolutions": {
+    "esbuild": "0.24.0"
   }
 }
