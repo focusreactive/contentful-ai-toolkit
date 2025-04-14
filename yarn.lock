@@ -932,20 +932,23 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.24.0.tgz#168ab1c7e1c318b922637fad8f339d48b01e1244"
   integrity sha512-7IAFPrjSQIJrGsK6flwg7NFmwBoSTyF3rl7If0hNUFQU4ilTsEPL6GuMuU9BfIWVVGuRnuIidkSMC+c0Otu8IA==
 
-"@focus-reactive/content-ai-sdk@link:../headless-cms-gpt-sdk/packages/contentful-ai-sdk/.yalc/@focus-reactive/content-ai-sdk":
-  version "0.0.0"
-  uid ""
-
-"@focus-reactive/contentful-ai-sdk@file:../headless-cms-gpt-sdk/packages/contentful-ai-sdk":
-  version "0.0.1"
+"@focus-reactive/content-ai-sdk@0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@focus-reactive/content-ai-sdk/-/content-ai-sdk-0.0.5.tgz#f1ca5c1058aacc7ec1a07a268c6dc027f1f0f317"
+  integrity sha512-BWWVhwFCyGyeKgZ9r5OvAqBkEMR2cD4QOfNQRxxDNYEJFtd1D/fCTvwIwIJSPJnLMU07FSEEpWYZvBFllMt6rA==
   dependencies:
-    "@focus-reactive/content-ai-sdk" "link:../../../Library/Caches/Yarn/v6/npm-@focus-reactive-contentful-ai-sdk-0.0.1-dce76c8a-754d-449a-9351-70495aa0f130-1734695759877/node_modules/@focus-reactive/contentful-ai-sdk/.yalc/@focus-reactive/content-ai-sdk"
+    flat "^6.0.1"
+    gpt-3-encoder "^1.1.4"
+    openai "^4.17.3"
+
+"@focus-reactive/contentful-ai-sdk@0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@focus-reactive/contentful-ai-sdk/-/contentful-ai-sdk-0.0.3.tgz#e1757e39a996b490e0a3623ce5965c22576d55b6"
+  integrity sha512-6qwTTMUeeg4bxNvX1w89ADDc0omQAdA/icRsvvIHzUYZY3ehCCwukzvhfOPVEAvNJfprZX+80sF9TT372vmzFw==
+  dependencies:
+    "@focus-reactive/content-ai-sdk" "0.0.5"
     vite-plugin-dts "^3.6.3"
     vite-tsconfig-paths "^5.0.1"
-
-"@focus-reactive/contentful-ai-sdk@link:../headless-cms-gpt-sdk/packages/contentful-ai-sdk":
-  version "0.0.0"
-  uid ""
 
 "@jridgewell/gen-mapping@^0.3.5":
   version "0.3.8"

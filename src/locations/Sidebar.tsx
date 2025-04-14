@@ -1,25 +1,25 @@
-import { SidebarAppSDK } from '@contentful/app-sdk'
-import { useAutoResizer, useSDK } from '@contentful/react-apps-toolkit'
-import { initSDK as initAiSdk } from '@focus-reactive/contentful-ai-sdk'
-import ContentLayout from '../actions/toolkit/components/ContentLayout'
-import { useEffect } from 'react'
-import { Note, Stack } from '@contentful/f36-components'
-import { AppInstallationParameters } from '../types'
+import { SidebarAppSDK } from '@contentful/app-sdk';
+import { useAutoResizer, useSDK } from '@contentful/react-apps-toolkit';
+import { initSDK as initAiSdk } from '@focus-reactive/contentful-ai-sdk';
+import ContentLayout from '../actions/toolkit/components/ContentLayout';
+import { useEffect } from 'react';
+import { Note, Stack } from '@contentful/f36-components';
+import { AppInstallationParameters } from '../types';
 
 const Sidebar = () => {
-  useAutoResizer()
+  useAutoResizer();
 
-  const sdk = useSDK<SidebarAppSDK>()
-  const parameters = sdk.parameters.installation as AppInstallationParameters | null
+  const sdk = useSDK<SidebarAppSDK>();
+  const parameters = sdk.parameters.installation as AppInstallationParameters | null;
 
-  const token = parameters?.openAiToken ?? process.env.REACT_APP_OPENAI_TOKEN
+  const token = parameters?.openAiToken;
   if (!token) {
-    return <Note variant="negative">Open AI token is not set</Note>
+    return <Note variant="negative">Open AI token is not set</Note>;
   }
 
   useEffect(() => {
-    initAiSdk({ client: sdk.cma, openAiKey: token })
-  }, [sdk.cma, token])
+    initAiSdk({ client: sdk.cma, openAiKey: token });
+  }, [sdk.cma, token]);
 
   return (
     <Stack
@@ -33,7 +33,7 @@ const Sidebar = () => {
         </Note>
       )}
     </Stack>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

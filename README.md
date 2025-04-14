@@ -1,83 +1,54 @@
 # Contentful AI Toolkit
 
-This project was bootstrapped with [Create Contentful App](https://github.com/contentful/create-contentful-app).
+The Contentful AI Toolkit provides a set of features powered by OpenAI:
 
-## How to use
+- Content summarization
+- Content translation (field-level and entry-level)
+- Content tagging
 
-Execute create-contentful-app with npm, npx or yarn to bootstrap the example:
+## Installation
 
-```bash
-# npx
-npx create-contentful-app --typescript
+The toolkit requires an OpenAI API key to work. If you don’t provide your own, it will use a built-in demo key with limited usage. Once the limit is reached, you’ll need to add your own key to continue using the features (please refer to [OpenAI docs](https://platform.openai.com/docs/quickstart) for more details).
 
-# npm
-npm init contentful-app -- --typescript
+After the app is installed, configure the sidebar by adding the toolkit to your extensions list for the necessary entries.
 
-# Yarn
-yarn create contentful-app --typescript
-```
+// paste video here
 
-## Available Scripts
+## Usage
 
-In the project directory, you can run:
+Let's look through each of the supported features.
 
-#### `npm start`
+### Summary
 
-Creates or updates your app definition in Contentful, and runs the app in development mode.
-Open your app to view it in the browser.
+The tool allows you to quickly summarize information in your entry, so you can use it for SEO descriptions or other purposes, such as a brief blog post description to display its business card.
 
-The page will reload if you make edits.
-You will also see any lint errors in the console.
+Select the Summary tab, enter the entry title, and press the button, we will prepare the rest for you.
 
-#### `npm run build`
+// paste video here
 
-Builds the app for production to the `build` folder.
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Translation
 
-The build is minified and the filenames include the hashes.
-Your app is ready to be deployed!
+The plugin offers OpenAI-powered translations of your entries into various languages. Field-level and entry-level [localization strategies](https://www.contentful.com/help/localization/field-and-entry-localization/) are supported.
 
-#### `npm run upload`
+To perform field-level translation, open the plugin, select the Field level, select the language you want to translate the content into, and click the button. Within 10-20 seconds we will prepare a translation of the page, taking into account the context and topic discussed in it.
 
-Uploads the build folder to contentful and creates a bundle that is automatically activated.
-The command guides you through the deployment process and asks for all required arguments.
-Read [here](https://www.contentful.com/developers/docs/extensibility/app-framework/create-contentful-app/#deploy-with-contentful) for more information about the deployment process.
+Important notes:
 
-#### `npm run upload-ci`
+1. Ensure the target language is added to your environment’s Locales.
+2. Enable localization for the relevant fields in your content model settings.
 
-Similar to `npm run upload` it will upload your app to contentful and activate it. The only difference is  
-that with this command all required arguments are read from the environment variables, for example when you add
-the upload command to your CI pipeline.
+// paste video here
 
-For this command to work, the following environment variables must be set:
+For entry-level you need to have both container and content entry in your default locale (as data source for the translation). The tool will automatically detect their types, so you can open any of these. Once localization is completed, we will create a new entry and add it to the container.
 
-- `CONTENTFUL_ORG_ID` - The ID of your organization
-- `CONTENTFUL_APP_DEF_ID` - The ID of the app to which to add the bundle
-- `CONTENTFUL_ACCESS_TOKEN` - A personal [access token](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/personal-access-tokens)
+// paste video here
 
-## Libraries to use
+> IMPORTANT: Make sure your container entry has localization enabled on the reference to the content entry.
 
-To make your app look and feel like Contentful use the following libraries:
+### Tags
 
-- [Forma 36](https://f36.contentful.com/) – Contentful's design system
-- [Contentful Field Editors](https://www.contentful.com/developers/docs/extensibility/field-editors/) – Contentful's field editor React components
+The toolkit can help you assign relevant tags to entries based on their actual content. It pulls tags from your environment settings, so make sure they’re set up correctly.
 
-## Using the `contentful-management` SDK
+Once the AI generates tag suggestions, simply pick the ones you want and apply them.
 
-In the default create contentful app output, a contentful management client is
-passed into each location. This can be used to interact with Contentful's
-management API. For example
-
-```js
-// Use the client
-cma.locale.getMany({}).then((locales) => console.log(locales));
-```
-
-Visit the [`contentful-management` documentation](https://www.contentful.com/developers/docs/extensibility/app-framework/sdk/#using-the-contentful-management-library)
-to find out more.
-
-## Learn More
-
-[Read more](https://www.contentful.com/developers/docs/extensibility/app-framework/create-contentful-app/) and check out the video on how to use the CLI.
-
-Create Contentful App uses [Create React App](https://create-react-app.dev/). You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started) and how to further customize your app.
+// paste video here

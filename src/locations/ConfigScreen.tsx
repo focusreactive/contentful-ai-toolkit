@@ -1,44 +1,50 @@
-import { ConfigAppSDK } from '@contentful/app-sdk'
-import { FormControl, Stack, TextInput } from '@contentful/f36-components'
-import { useSDK } from '@contentful/react-apps-toolkit'
-import { useEffect, useState } from 'react'
-import { AppInstallationParameters } from '../types'
+import { ConfigAppSDK } from '@contentful/app-sdk';
+import { FormControl, Stack, TextInput } from '@contentful/f36-components';
+import { useSDK } from '@contentful/react-apps-toolkit';
+import { useEffect, useState } from 'react';
+import { AppInstallationParameters } from '../types';
+import fetchDemoToken from '@/api/fetchDemoToken';
 
 const ConfigScreen = () => {
-  const sdk = useSDK<ConfigAppSDK>()
+  const sdk = useSDK<ConfigAppSDK>();
 
   const [parameters, setParameters] = useState<AppInstallationParameters>({
     openAiToken: '',
-  })
+  });
 
   const onConfigure = async () => {
-    const currentState = await sdk.app.getCurrentState()
+    const [openAiToken, currentState] = await Promise.all([
+      parameters.openAiToken || fetchDemoToken(sdk.user.sys.id),
+      sdk.app.getCurrentState(),
+    ]);
 
     return {
       // Parameters to be persisted as the app configuration.
-      parameters,
+      parameters: {
+        openAiToken,
+      },
       // In case you don't want to submit any update to app
       // locations, you can just pass the currentState as is
       targetState: currentState,
-    }
-  }
+    };
+  };
 
   useEffect(() => {
     async function init() {
-      const parameters = await sdk.app.getParameters()
+      const parameters = await sdk.app.getParameters();
       if (parameters) {
-        setParameters(parameters as AppInstallationParameters)
+        setParameters(parameters as AppInstallationParameters);
       }
 
-      sdk.app.setReady()
+      sdk.app.setReady();
     }
 
-    init()
-  }, [sdk])
+    init();
+  }, [sdk]);
 
   useEffect(() => {
-    sdk.app.onConfigure(onConfigure)
-  }, [onConfigure])
+    sdk.app.onConfigure(onConfigure);
+  }, [sdk, onConfigure]);
 
   return (
     <Stack
@@ -63,7 +69,7 @@ const ConfigScreen = () => {
         </FormControl.HelpText>
       </FormControl>
     </Stack>
-  )
-}
+  );
+};
 
-export default ConfigScreen
+export default ConfigScreen;
