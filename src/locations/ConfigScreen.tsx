@@ -1,4 +1,4 @@
-import { ConfigAppSDK } from '@contentful/app-sdk';
+import { AppState, ConfigAppSDK } from '@contentful/app-sdk';
 import { FormControl, Stack, TextInput } from '@contentful/f36-components';
 import { useSDK } from '@contentful/react-apps-toolkit';
 import { useEffect, useState } from 'react';
@@ -8,11 +8,14 @@ import fetchDemoToken from '@/api/fetchDemoToken';
 const ConfigScreen = () => {
   const sdk = useSDK<ConfigAppSDK>();
 
-  const [parameters, setParameters] = useState<AppInstallationParameters>({
+  const [parameters, setParameters] = useState<Pick<AppInstallationParameters, 'openAiToken'>>({
     openAiToken: '',
   });
 
-  const onConfigure = async () => {
+  const onConfigure = async (): Promise<{
+    parameters: AppInstallationParameters;
+    targetState: AppState | null;
+  }> => {
     const [openAiToken, currentState] = await Promise.all([
       parameters.openAiToken || fetchDemoToken(sdk.user.sys.id),
       sdk.app.getCurrentState(),
@@ -22,6 +25,7 @@ const ConfigScreen = () => {
       // Parameters to be persisted as the app configuration.
       parameters: {
         openAiToken,
+        usageMode: parameters.openAiToken ? 'custom-token' : 'demo',
       },
       // In case you don't want to submit any update to app
       // locations, you can just pass the currentState as is

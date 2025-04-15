@@ -28,12 +28,15 @@ const Sidebar = () => {
       spacing="spacingS"
     >
       <ContentLayout />
-      <TextLink href={`mailto:${SUPPORT_EMAIL}`}>Contact support</TextLink>
-      {!parameters?.openAiToken && (
-        <Note style={{ width: '100%' }}>
-          You are using default OpenAI token, functionality is limited.
+      {parameters?.usageMode === 'demo' && (
+        <Note
+          variant="neutral"
+          style={{ width: '100%' }}
+        >
+          You are using shared OpenAI token, functionality is <strong>limited</strong>.
         </Note>
       )}
+      <TextLink href={`mailto:${SUPPORT_EMAIL}`}>Contact support</TextLink>
     </Stack>
   );
 };
