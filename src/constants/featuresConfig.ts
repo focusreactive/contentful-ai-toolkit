@@ -1,7 +1,7 @@
 import * as React from 'react'
-import Translate from '../components/Translate'
-import Tags from '../components/Tags'
-import Summary from '../components/Summary'
+import Translate from '../actions/toolkit/components/Translate'
+import Tags from '../actions/toolkit/components/Tags'
+import Summary from '../actions/toolkit/components/Summary'
 
 export enum FeatureName {
   Translate = 'Translate',

@@ -1,5 +1,5 @@
-import { FeatureName, FeaturesConfig } from '../../constants/featuresConfig'
-import { Card, Tabs } from '@contentful/f36-components'
+import { FeatureName, FeaturesConfig } from '@/constants/featuresConfig';
+import { Card, Tabs } from '@contentful/f36-components';
 
 const ContentLayout = () => {
   return (
@@ -31,7 +31,7 @@ const ContentLayout = () => {
         </Tabs.Panel>
       ))}
     </Tabs>
-  )
-}
+  );
+};
 
-export default ContentLayout
+export default ContentLayout;

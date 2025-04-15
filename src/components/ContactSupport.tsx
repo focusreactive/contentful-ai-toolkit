@@ -1,4 +1,5 @@
-import { Note, Paragraph, Text, TextLink } from '@contentful/f36-components'
+import { SUPPORT_EMAIL } from '@/constants/globalConfig';
+import { Note, Paragraph, Text, TextLink } from '@contentful/f36-components';
 
 const ContactSupport = ({ message }: { message: string }) => {
   return (
@@ -8,8 +9,7 @@ const ContactSupport = ({ message }: { message: string }) => {
     >
       <Paragraph>
         If the issue persists, please contact{' '}
-        <TextLink href="mailto:denis.urban@gitnation.org">support</TextLink> with the following
-        details:
+        <TextLink href={`mailto:${SUPPORT_EMAIL}`}>support</TextLink> with the following details:
       </Paragraph>
       {/* <br /> */}
       <Text
@@ -22,7 +22,7 @@ const ContactSupport = ({ message }: { message: string }) => {
         {message}
       </Text>
     </Note>
-  )
-}
+  );
+};
 
-export default ContactSupport
+export default ContactSupport;
