@@ -6,6 +6,10 @@ The Contentful AI Toolkit provides a set of features powered by OpenAI:
 - Content translation (field-level and entry-level)
 - Content tagging
 
+## Related
+
+- [SDK](https://github.com/focusreactive/contentful-ai-sdk)
+
 ## Installation
 
 The toolkit requires an OpenAI API key to work. If you don’t provide your own, it will use a built-in demo key with limited usage. Once the limit is reached, you’ll need to add your own key to continue using the features (please refer to [OpenAI docs](https://platform.openai.com/docs/quickstart) for more details).
